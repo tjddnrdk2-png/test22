@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="지자체 협력사업 신청 현황과 예산 한도 자동 판정">
+  <title>자치행정 협력사업 신청 현황</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="top-rule" aria-hidden="true"></div>
+  <main>
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">LOCAL GOVERNMENT COOPERATION</p>
+        <h1>자치행정 협력사업<br><span>신청 현황</span></h1>
+        <p class="hero-description">신청 사업의 핵심 정보를 한눈에 확인하고, 예산 한도 기준으로 승인 여부를 자동 판정합니다.</p>
+      </div>
+      <div class="hero-badge" aria-label="2026년도 신청 현황">
+        <span>2026</span>
+        <strong>협력사업</strong>
+        <small>신청 현황</small>
+      </div>
+    </header>
+
+    <section class="summary" aria-label="신청 요약">
+      <article><span>전체 신청</span><strong id="totalCount">—</strong><small>건</small></article>
+      <article class="approved"><span>승인</span><strong id="approvedCount">—</strong><small>건</small></article>
+      <article class="rejected"><span>반려</span><strong id="rejectedCount">—</strong><small>건</small></article>
+      <article><span>신청 예산 합계</span><strong id="totalBudget">—</strong><small>억원</small></article>
+    </section>
+
+    <section class="applications" aria-labelledby="applicationsTitle">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">APPLICATIONS</p>
+          <h2 id="applicationsTitle">신청 사업 목록</h2>
+        </div>
+        <div class="limit-note"><span></span> 승인 한도 <strong>5억원</strong> (500,000천원)</div>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-wrap">
+          <span class="sr-only">지자체 또는 사업명 검색</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+          <input id="searchInput" type="search" placeholder="지자체 또는 사업명 검색">
+        </label>
+        <div class="filters" role="group" aria-label="판정 결과 필터">
+          <button class="active" data-filter="all" type="button">전체</button>
+          <button data-filter="approved" type="button">승인</button>
+          <button data-filter="rejected" type="button">반려</button>
+        </div>
+      </div>
+
+      <div id="cardGrid" class="card-grid" aria-live="polite"></div>
+      <p id="emptyState" class="empty-state" hidden>조건에 맞는 신청 사업이 없습니다.</p>
+    </section>
+
+    <section class="sheet-section" aria-labelledby="sheetTitle">
+      <div class="sheet-intro">
+        <p class="section-kicker">SOURCE DATA</p>
+        <h2 id="sheetTitle">신청 자료 원본</h2>
+        <p>지자체, 사업명, 예산을 정리한 Google Sheets 게시본입니다.</p>
+      </div>
+      <div class="sheet-frame-wrap">
+        <!-- Google Sheets의 '웹에 게시' iframe src를 app.js의 SHEET_EMBED_URL에 넣으면 자동 표시됩니다. -->
+        <iframe id="sheetFrame" title="신청 자료 Google Sheets" loading="lazy"></iframe>
+        <div id="sheetPlaceholder" class="sheet-placeholder">
+          <div class="sheet-icon" aria-hidden="true">▦</div>
+          <strong>Google Sheets 연결 대기 중</strong>
+          <p>웹에 게시된 임베딩 링크가 입력되면 이 영역에 신청 자료가 표시됩니다.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>자치행정 협력사업 관리 시스템</p>
+    <span>마지막 갱신 · 2026. 10. 28.</span>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
